@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  h1, h2, h3, h4, h5 { text-wrap: balance !important; }
+  p, li, blockquote, figcaption, label span, dd { text-wrap: pretty !important; }
+  @media (max-width: 720px) { h1, h2, h3, h4, p { max-width: none !important; } }
+  body { margin: 0; overflow-x: hidden; background: #ffffff; color: #57646f; font-family: Figtree, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #082c5c; text-decoration: none; }
+  a:hover { color: #008FCD; }
+  input::placeholder { color: #a6aeb6; }
+  ::selection { background: #d8eefb; }
+  @keyframes shDrift { 0% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(0,-16px,0) scale(1.04); } 100% { transform: translate3d(0,0,0) scale(1); } }
+</style>
+</helmet>
+<div>
+
+  <header style="position: sticky; top: 0; z-index: 60; background: #ffffff; border-bottom: 1px solid #e6ecf2;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 18px 40px; display: flex; align-items: center; gap: 24px;">
+      <a href="#top" style="flex-shrink: 0; display: block;">
+        <img src="assets/solidhelia-logo.png" alt="Solidhelia" style="height: 44px; width: auto; display: block;" />
+      </a>
+      <nav style="display: flex; align-items: center; gap: 4px; margin-left: auto; flex-wrap: wrap;">
+        <a href="About.dc.html" style="font-size: 15px; color: #3c4a57; padding: 9px 14px;" style-hover="color: #008FCD;">About</a>
+        <a href="Science.dc.html" style="font-size: 15px; color: #3c4a57; padding: 9px 14px;" style-hover="color: #008FCD;">Science</a>
+        <div style="position: relative;" onMouseEnter="{{ openMenu }}" onMouseLeave="{{ closeMenu }}">
+          <a href="Solutions.dc.html" style="font-size: 15px; color: #3c4a57; padding: 9px 14px; display: inline-flex; align-items: center; gap: 6px;" style-hover="color: #008FCD;">Solutions<span style="font-size: 10px; opacity: 0.6;">⌄</span></a>
+          <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position: absolute; top: 100%; left: -6px; padding-top: 10px; width: 300px;">
+              <div style="background: #ffffff; border-radius: 3px; box-shadow: 0 22px 54px -22px rgba(16,32,46,0.26); border: 1px solid #e6ecf2; padding: 12px 6px;">
+                <sc-for list="{{ areas }}" as="a" hint-placeholder-count="6">
+                  <a href="{{ a.href }}" style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: #3c4a57; padding: 9px 16px; border-radius: 2px;" style-hover="background: #EAF3FC; color: #082c5c;"><span style="width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; display: block; background: {{ a.dot }};"></span>{{ a.title }}</a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <a href="Quality.dc.html" style="font-size: 15px; color: #3c4a57; padding: 9px 14px;" style-hover="color: #008FCD;">Quality</a>
+        <a href="Contact.dc.html" style="font-size: 15px; color: #3c4a57; padding: 9px 14px;" style-hover="color: #008FCD;">Contact</a>
+        <a href="Shop.dc.html" style="font-size: 15px; color: #082c5c; padding: 10px 26px; margin-left: 12px; border: 1px solid #082c5c; border-radius: 2px;" style-hover="background: #082c5c; color: #ffffff;">Shop</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="top" style="position: relative; overflow: hidden; background: #ffffff;">
+    <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 96px 40px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 72px; align-items: stretch;">
+      <div style="min-width: 0; padding-bottom: 96px;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+          <span style="width: 40px; height: 1px; background: #008FCD;"></span>
+          <span style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #008FCD;">Nutraceutical Innovation</span>
+        </div>
+        <h1 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(40px, 5vw, 64px); line-height: 1.07; letter-spacing: -0.015em; margin: 0 0 28px; color: #0c1a28;">Strong Aging<br />Starts Within<span style="font-family: Figtree, sans-serif; font-size: 0.16em; font-weight: 500; vertical-align: super; letter-spacing: 0.02em; color: #008FCD;">TM</span></h1>
+        <p style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(20px, 2vw, 26px); line-height: 1.36; color: #5a6773; margin: 0 0 26px; max-width: 24em;">Solidhelia — gut-axis nutraceutical solutions for Proactive&nbsp;Agers</p>
+        <p style="font-size: 17px; line-height: 1.75; color: #5a6773; margin: 0 0 40px; max-width: 31em; text-wrap: pretty;">Solidhelia develops science-informed nutraceutical solutions for Proactive Agers — adults in midlife and beyond who want to support strength, clarity, mobility, resilience, and whole-body wellness by starting where the body connects: the&nbsp;gut.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 48px;">
+          <a href="Solutions.dc.html" style="display: inline-flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; padding: 16px 30px; border-radius: 2px; background: #082c5c; color: #ffffff;" style-hover="background: #0a3f7a;">Explore Our Solution Areas<span style="font-size: 15px;">→</span></a>
+          <a href="Science.dc.html" style="display: inline-flex; align-items: center; font-size: 15px; font-weight: 600; padding: 16px 30px; border-radius: 2px; border: 1px solid #c9d6e4; background: #ffffff; color: #082c5c;" style-hover="border-color: #008FCD; color: #008FCD;">Learn About Our Science</a>
+        </div>
+        </div>
+      <div style="min-width: 0; display: flex; align-items: center; justify-content: center; padding: 0 0 96px;">
+        <svg viewBox="0 0 520 520" style="width: 100%; max-width: 620px; height: auto; display: block;" aria-hidden="true">
+          <defs>
+            <radialGradient id="shGlowA">
+              <stop offset="0%" stop-color="#b6c6d6" stop-opacity="0.72"></stop>
+              <stop offset="38%" stop-color="#c2d1de" stop-opacity="0.5"></stop>
+              <stop offset="68%" stop-color="#d8e2ec" stop-opacity="0.26"></stop>
+              <stop offset="100%" stop-color="#eef3fa" stop-opacity="0"></stop>
+            </radialGradient>
+          </defs>
+          <circle cx="260" cy="260" r="215" fill="url(#shGlowA)"></circle>
+          <line x1="260" y1="260" x2="184.5" y2="130.8" stroke="#c6c9c7" stroke-width="3"></line>
+          <line x1="260" y1="260" x2="335.5" y2="130.8" stroke="#c6c9c7" stroke-width="3"></line>
+          <line x1="260" y1="260" x2="109" y2="260" stroke="#c6c9c7" stroke-width="3"></line>
+          <line x1="260" y1="260" x2="411" y2="260" stroke="#c6c9c7" stroke-width="3"></line>
+          <line x1="260" y1="260" x2="184.5" y2="389.2" stroke="#c6c9c7" stroke-width="3"></line>
+          <line x1="260" y1="260" x2="335.5" y2="389.2" stroke="#c6c9c7" stroke-width="3"></line>
+          <circle cx="260" cy="260" r="47.8" fill="#008fcd"></circle>
+          <circle cx="184.5" cy="130.8" r="30.1" fill="#007367"></circle>
+          <circle cx="335.5" cy="130.8" r="30.1" fill="#961a4b"></circle>
+          <circle cx="109" cy="260" r="30.1" fill="#ce3827"></circle>
+          <circle cx="411" cy="260" r="30.1" fill="#064872"></circle>
+          <circle cx="184.5" cy="389.2" r="30.1" fill="#483a96"></circle>
+          <circle cx="335.5" cy="389.2" r="30.1" fill="#862b91"></circle>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="position: relative; overflow: hidden; background: #ffffff; border-top: 1px solid #e6ecf2;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); align-items: stretch;">
+      <div style="min-width: 0; position: relative; display: flex;">
+        <div style="position: relative; flex: 1; min-height: 540px; overflow: hidden;">
+          <video src="assets/who-we-serve-3.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; display: block;"></video>
+        </div>
+      </div>
+      <div style="min-width: 0; display: flex; flex-direction: column; justify-content: center; padding: 96px 6vw 96px 96px;">
+        <div style="max-width: 620px;">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+            <span style="width: 40px; height: 1px; background: #008FCD;"></span>
+            <span style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #008FCD;">Who We Serve</span>
+          </div>
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; margin: 0 0 24px; color: #0c1a28; text-wrap: balance;">Built for Proactive&nbsp;Agers</h2>
+          <p style="font-size: 17.5px; line-height: 1.78; color: #5a6773; margin: 0 0 44px; text-wrap: pretty;">Proactive Agers are adults in midlife and beyond who want to participate actively in their health, support their body's natural systems, and stay strong, sharp, mobile, independent, and engaged as they&nbsp;age.</p>
+          <a href="About.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: #082c5c; padding-bottom: 8px; border-bottom: 1px solid #c9d6e4;" style-hover="border-color: #008FCD; color: #008FCD;">About Solidhelia<span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solutions" style="padding: 118px 40px 128px; background: #EAF3FC; border-top: 1px solid #e6ecf2;">
+    <div style="max-width: 1120px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 56px; align-items: end; margin-bottom: 64px;">
+        <div style="min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+            <span style="width: 40px; height: 1px; background: #008FCD;"></span>
+            <span style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #008FCD;">Solution Areas</span>
+          </div>
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; margin: 0; color: #0c1a28; max-width: none; text-wrap: balance;">Six Solution Areas. One Connected View of the&nbsp;Body.</h2>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+        <sc-for list="{{ areas }}" as="a" hint-placeholder-count="6">
+          <a href="{{ a.href }}" style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid #e6ecf2; padding: 30px 32px 26px; color: inherit; transition: box-shadow 0.28s, transform 0.28s;" style-hover="box-shadow: 0 26px 50px -30px rgba(12,26,40,0.3); transform: translateY(-4px);">
+            <span style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;">
+              <span style="width: 38px; height: 38px; display: block;">{{ a.glyph }}</span>
+              <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 13px; letter-spacing: 0.18em; color: #9fb0bf;">{{ a.num }}</span>
+            </span>
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 500; line-height: 1.2; color: #0c1a28; margin-bottom: 11px;">{{ a.title }}</span>
+            <span style="font-size: 15px; line-height: 1.62; color: #6b7680; margin-bottom: 22px; text-wrap: pretty;">{{ a.blurb }}</span>
+            <span style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding-top: 16px; border-top: 1px solid #eef2f7;">
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: {{ a.dot }};"></span>
+              <span style="font-size: 14.5px; font-weight: 600; color: {{ a.dot }};">{{ a.cta }}</span>
+              <span style="margin-left: auto; color: {{ a.dot }};">→</span>
+            </span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="science" style="position: relative; overflow: hidden; padding: 130px 40px 134px; background: #ffffff; border-top: 1px solid #e6ecf2;">
+    <div style="position: absolute; bottom: -90px; left: -110px; width: 360px; height: 360px; background-image: radial-gradient(circle, rgba(0,143,205,0.15) 1px, transparent 1px); background-size: 20px 20px; -webkit-mask-image: radial-gradient(circle at 50% 50%, #000, transparent 70%); mask-image: radial-gradient(circle at 50% 50%, #000, transparent 70%); pointer-events: none;"></div>
+    <div style="position: relative; max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 76px; align-items: center;">
+      <div style="min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+          <span style="width: 40px; height: 1px; background: #008FCD;"></span>
+          <span style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #008FCD;">The Science</span>
+        </div>
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; margin: 0 0 24px; color: #0c1a28; text-wrap: balance;">We Start Where the Body&nbsp;Connects</h2>
+        <p style="font-size: 17.5px; line-height: 1.76; color: #5a6773; margin: 0 0 36px; max-width: 31em; text-wrap: pretty;">The gut is more than a digestive organ. It is a communication hub connected to muscles, joints, the brain, immune function, digestive balance, and whole-body wellness. Solidhelia develops nutraceutical solutions around this connected view of&nbsp;health.</p>
+        <a href="Science.dc.html" style="display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: #082c5c; padding-bottom: 8px; border-bottom: 1px solid #c9d6e4;" style-hover="border-color: #008FCD; color: #008FCD;">Explore Our Science<span>→</span></a>
+      </div>
+      <div style="min-width: 0; background: #ffffff; padding: 8% 15%;">
+        <div style="position: relative; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center;">
+          <svg viewBox="0 0 500 500" width="500" style="width: 100%; height: auto; display: block;" aria-hidden="true">
+          <defs>
+          <radialGradient id="shGlowB">
+          <stop offset="0%" stop-color="#b9d4ec" stop-opacity="0.75"></stop>
+          <stop offset="45%" stop-color="#cfe1f2" stop-opacity="0.45"></stop>
+          <stop offset="78%" stop-color="#e3edf7" stop-opacity="0.18"></stop>
+          <stop offset="100%" stop-color="#eef3fa" stop-opacity="0"></stop>
+          </radialGradient>
+          </defs>
+          <circle cx="250" cy="250" r="240" fill="url(#shGlowB)"></circle>
+          <line x1="250" y1="250" x2="180.5" y2="131.1" stroke="#c6c9c7" stroke-width="2.76"></line>
+          <line x1="250" y1="250" x2="319.5" y2="131.1" stroke="#c6c9c7" stroke-width="2.76"></line>
+          <line x1="250" y1="250" x2="111.1" y2="250.0" stroke="#c6c9c7" stroke-width="2.76"></line>
+          <line x1="250" y1="250" x2="388.9" y2="250.0" stroke="#c6c9c7" stroke-width="2.76"></line>
+          <line x1="250" y1="250" x2="180.5" y2="368.9" stroke="#c6c9c7" stroke-width="2.76"></line>
+          <line x1="250" y1="250" x2="319.5" y2="368.9" stroke="#c6c9c7" stroke-width="2.76"></line>
+          <circle cx="250" cy="250" r="44.0" fill="#008fcd"></circle>
+          <circle cx="180.5" cy="131.1" r="27.7" fill="#007367"></circle>
+          <circle cx="319.5" cy="131.1" r="27.7" fill="#961a4b"></circle>
+          <circle cx="111.1" cy="250.0" r="27.7" fill="#ce3827"></circle>
+          <circle cx="388.9" cy="250.0" r="27.7" fill="#064872"></circle>
+          <circle cx="180.5" cy="368.9" r="27.7" fill="#483a96"></circle>
+          <circle cx="319.5" cy="368.9" r="27.7" fill="#862b91"></circle>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="overflow: hidden; background: #ffffff; border-top: 1px solid #e6ecf2;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 72px; align-items: center;">
+      <div style="min-width: 0; padding: 112px 0;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+          <span style="width: 40px; height: 1px; background: #008FCD;"></span>
+          <span style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #008FCD;">Our Philosophy</span>
+        </div>
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; margin: 0 0 24px; color: #0c1a28;">You Are the Main&nbsp;Ingredient</h2>
+        <p style="font-size: 17.5px; line-height: 1.76; color: #5a6773; margin: 0 0 36px; max-width: 30em; text-wrap: pretty;">Nutritional tools matter, but they work best when paired with intention, consistency, and daily participation. Solidhelia is built for Proactive Agers who want to take an active role in how they support their body over&nbsp;time.</p>
+        <a href="About.dc.html" style="display: inline-flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; padding: 16px 32px; border-radius: 2px; background: #082c5c; color: #ffffff;" style-hover="background: #0a3f7a;">About Solidhelia<span>→</span></a>
+      </div>
+      <div style="min-width: 0; align-self: stretch; display: flex; margin-right: min(-40px, calc(600px - 50vw));">
+        <div style="flex: 1; min-height: 480px; overflow: hidden; position: relative; background: #a2b7c4;">
+          <video src="assets/main-ingredient-2.mp4" ref="{{ videoRef }}" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsinline="{{ true }}" controls="{{ false }}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quality" style="padding: 132px 40px 136px; background: #ffffff; border-top: 1px solid #e6ecf2;">
+    <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 84px; align-items: start;">
+      <div style="min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+          <span style="width: 40px; height: 1px; background: #008FCD;"></span>
+          <span style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #008FCD;">Quality</span>
+        </div>
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; margin: 0 0 24px; color: #0c1a28; max-width: 15em; text-wrap: balance;">Responsible Science. Thoughtful&nbsp;Standards.</h2>
+        <p style="font-size: 17px; line-height: 1.78; color: #5a6773; margin: 0 0 40px; max-width: 30em; text-wrap: pretty;">We believe trust is built through clarity, responsible communication, and quality standards that respect both science and the&nbsp;consumer.</p>
+        <a href="Quality.dc.html" style="display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; color: #082c5c; padding-bottom: 8px; border-bottom: 1px solid #c9d6e4;" style-hover="border-color: #008FCD; color: #008FCD;">View Our Quality Standards<span>→</span></a>
+      </div>
+      <div style="min-width: 0; background: #EAF3FC; padding: 10px 34px 50px;">
+        <sc-for list="{{ standards }}" as="s" hint-placeholder-count="3">
+          <div style="display: flex; align-items: flex-start; gap: 18px; padding: 40px 0 0;">
+            <span style="width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: #008FCD; margin-top: calc((1.32em - 7px) / 2);"></span>
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(20px, 2vw, 27px); line-height: 1.32; letter-spacing: -0.006em; color: #0c1a28; text-wrap: balance;">{{ s.title }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding: 124px 40px; background: #ffffff; border-top: 1px solid #e6ecf2;">
+    <div style="max-width: 1280px; margin: 0 auto; border: 1px solid #e6ecf2; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+      <div style="min-width: 0; padding: 64px 56px; background: #EAF3FC;">
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; margin: 0 0 24px; color: #0c1a28;">Stay&nbsp;Informed</h2>
+        <p style="font-size: 16.5px; line-height: 1.72; color: #5a6773; margin: 0 0 36px; max-width: 24em; text-wrap: pretty;">Solidhelia updates on science, solution areas, and future products — delivered&nbsp;thoughtfully.</p>
+        <img src="assets/solidhelia-logo.png" alt="Solidhelia — Strong Aging Starts Within" style="height: 66px; width: auto; display: block;" />
+      </div>
+      <div style="min-width: 0; padding: 64px 56px; background: #ffffff;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 18px;">
+          <input type="text" placeholder="First name (optional)" style="font-family: Figtree, sans-serif; font-size: 15px; padding: 14px 2px; border: none; border-bottom: 1px solid #d9e2ec; background: transparent; color: #3c4a57; min-width: 0;" />
+          <input type="email" placeholder="Email address" style="font-family: Figtree, sans-serif; font-size: 15px; padding: 14px 2px; border: none; border-bottom: 1px solid #d9e2ec; background: transparent; color: #3c4a57; min-width: 0;" />
+        </div>
+        <label style="display: flex; gap: 12px; align-items: flex-start; cursor: pointer; margin: 26px 0;">
+          <input type="checkbox" checked="{{ agreed }}" onChange="{{ toggleAgree }}" style="margin-top: 3px; accent-color: #082c5c;" />
+          <span style="font-size: 14px; line-height: 1.55; color: #6b7680;">I agree to receive email updates from Solidhelia about science, solution areas, and product updates. I can unsubscribe at any time.</span>
+        </label>
+        <button onClick="{{ subscribe }}" style="font-family: Figtree, sans-serif; font-size: 15px; font-weight: 600; padding: 14px 32px; border: none; border-radius: 2px; background: #082c5c; color: #ffffff; cursor: pointer;" style-hover="background: #0a3f7a;">{{ subscribeLabel }}</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop" style="position: relative; overflow: hidden; background: #eaf3fc; border-top: 1px solid #e6ecf2; padding: 0 40px;">
+    <div style="position: relative; max-width: 1280px; margin: 0 auto; min-height: 560px; display: flex; align-items: center;">
+      <img src="assets/shop-seedling-2.png" alt="Glass seedling with teal roots growing from a clear glass seed" style="position: absolute; top: 0; right: 0; height: 100%; width: auto; aspect-ratio: 1; max-width: 60%; object-fit: cover; object-position: 50% 50%; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 24%, #000 72%, transparent 100%), linear-gradient(180deg, #000 0%, #000 80%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0%, #000 24%, #000 72%, transparent 100%), linear-gradient(180deg, #000 0%, #000 80%, transparent 100%); mask-composite: intersect;" />
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, #eaf3fc 0%, #eaf3fc 40%, rgba(234,243,252,0.6) 50%, rgba(234,243,252,0) 62%);"></div>
+      <div style="position: relative; padding: 112px 40px 112px 0; max-width: 460px; margin-right: auto; text-align: left;">
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; margin: 0 0 24px; color: #0c1a28;">Strong Aging Starts&nbsp;Within.</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px;">
+          <a href="Solutions.dc.html" style="display: inline-flex; align-items: center; font-size: 15px; font-weight: 600; padding: 16px 32px; border-radius: 2px; background: #082c5c; color: #ffffff;" style-hover="background: #0a3f7a;">Explore Solutions</a>
+          <a href="Contact.dc.html" style="display: inline-flex; align-items: center; font-size: 15px; font-weight: 600; padding: 16px 32px; border-radius: 2px; border: 1px solid #c9d6e4; background: #ffffff; color: #082c5c;" style-hover="border-color: #008FCD; color: #008FCD;">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: #f5f8fb; border-top: 1px solid #e6ecf2;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 78px 40px 46px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 56px;">
+      <div style="min-width: 0;">
+        <img src="assets/solidhelia-logo.png" alt="Solidhelia — Strong Aging Starts Within" style="height: 66px; width: auto; display: block; margin-bottom: 26px;" />
+        <p style="font-size: 15.5px; line-height: 1.68; color: #6b7680; margin: 0 0 22px; max-width: 25em;">A premium, responsible, gut-axis nutraceutical innovation brand for Proactive&nbsp;Agers.</p>
+        <p style="font-size: 15.5px; line-height: 1.68; color: #6b7680; margin: 0 0 26px;">Solidfarma USA Corp. d/b/a Solidhelia<br /><a href="mailto:info@solidhelia.com" style="color: #6b7680;" style-hover="color: #008FCD;">info@solidhelia.com</a></p>
+        <div style="display: flex; gap: 10px;">
+          <a href="#" aria-label="LinkedIn" style="width: 38px; height: 38px; border: 1px solid #d5e0ec; display: flex; align-items: center; justify-content: center; color: #6b7680;" style-hover="border-color: #008FCD; color: #008FCD;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+              <line x1="7.6" y1="10.6" x2="7.6" y2="17"></line>
+              <circle cx="7.6" cy="7.4" r="0.9" fill="currentColor" stroke="none"></circle>
+              <path d="M11.6 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"></path>
+              <line x1="11.6" y1="10.6" x2="11.6" y2="17"></line>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram" style="width: 38px; height: 38px; border: 1px solid #d5e0ec; display: flex; align-items: center; justify-content: center; color: #6b7680;" style-hover="border-color: #008FCD; color: #008FCD;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook" style="width: 38px; height: 38px; border: 1px solid #d5e0ec; display: flex; align-items: center; justify-content: center; color: #6b7680;" style-hover="border-color: #008FCD; color: #008FCD;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15.6 3.4h-2.3a3.7 3.7 0 0 0-3.7 3.7V21"></path>
+              <line x1="7.4" y1="11.4" x2="14.6" y2="11.4"></line>
+            </svg>
+          </a>
+          <a href="#" aria-label="YouTube" style="width: 38px; height: 38px; border: 1px solid #d5e0ec; display: flex; align-items: center; justify-content: center; color: #6b7680;" style-hover="border-color: #008FCD; color: #008FCD;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2.6" y="6" width="18.8" height="12" rx="3.4"></rect>
+              <path d="M10.6 9.6l4.4 2.4-4.4 2.4z" fill="currentColor" stroke="none"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div style="min-width: 0;">
+        <h4 style="font-family: 'Playfair Display', Georgia, serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0c1a28; margin: 0 0 22px;">Explore</h4>
+        <div style="display: flex; flex-direction: column; gap: 13px;">
+          <sc-for list="{{ exploreLinks }}" as="l" hint-placeholder-count="6">
+            <a href="{{ l.href }}" style="font-size: 15.5px; color: #4d5a67;" style-hover="color: #008FCD;">{{ l.title }}</a>
+          </sc-for>
+        </div>
+      </div>
+      <div style="min-width: 0;">
+        <h4 style="font-family: 'Playfair Display', Georgia, serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0c1a28; margin: 0 0 22px;">Solution&nbsp;Areas</h4>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px 18px;">
+          <sc-for list="{{ areas }}" as="a" hint-placeholder-count="6">
+            <a href="{{ a.href }}" style="display: flex; align-items: center; gap: 9px; font-size: 15.5px; color: #4d5a67;" style-hover="color: #008FCD;"><span style="width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: {{ a.dot }};"></span>{{ a.label }}</a>
+          </sc-for>
+        </div>
+        <h4 style="font-family: 'Playfair Display', Georgia, serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0c1a28; margin: 34px 0 18px;">Stay&nbsp;Informed</h4>
+        <div style="display: flex; flex-direction: column; gap: 14px; max-width: 380px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px;">
+            <input type="text" placeholder="First name (optional)" style="font-family: Figtree, sans-serif; font-size: 14.5px; padding: 12px 2px; border: none; border-bottom: 1px solid #d9e2ec; background: transparent; color: #3c4a57; min-width: 0;" />
+            <input type="email" placeholder="Email address" style="font-family: Figtree, sans-serif; font-size: 14.5px; padding: 12px 2px; border: none; border-bottom: 1px solid #d9e2ec; background: transparent; color: #3c4a57; min-width: 0;" />
+          </div>
+          <label style="display: flex; gap: 10px; align-items: flex-start; cursor: pointer;">
+            <input type="checkbox" checked="{{ agreed }}" onChange="{{ toggleAgree }}" style="margin-top: 3px; accent-color: #082c5c;" />
+            <span style="font-size: 13.5px; line-height: 1.55; color: #6b7680;">I agree to receive email updates from Solidhelia about science, solution areas, and product updates. I can unsubscribe at any time.</span>
+          </label>
+          <button onClick="{{ subscribe }}" style="font-family: Figtree, sans-serif; font-size: 15px; font-weight: 600; padding: 13px 30px; border: none; border-radius: 2px; background: #082c5c; color: #ffffff; cursor: pointer; align-self: flex-start;" style-hover="background: #0a3f7a;">{{ subscribeLabel }}</button>
+        </div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #e1e9f2;">
+      <div style="max-width: 1280px; margin: 0 auto; padding: 26px 40px 36px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between;">
+          <span style="font-size: 14px; color: #6b7680;">© 2026 Solidfarma USA Corp. d/b/a Solidhelia. All rights reserved.</span>
+          <div style="display: flex; gap: 26px;">
+            <a href="/privacy" style="font-size: 14px; color: #4d5a67;" style-hover="color: #008FCD;">Privacy Policy</a>
+            <a href="/terms" style="font-size: 14px; color: #4d5a67;" style-hover="color: #008FCD;">Terms of Service</a>
+          </div>
+        </div>
+        <p style="margin: 18px 0 0; font-size: 12.5px; line-height: 1.65; color: #8b949c; max-width: 68em;">These statements have not been evaluated by the Food and Drug Administration. Products are not intended to diagnose, treat, cure, or prevent any&nbsp;disease.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  <template id="__bundler_thumbnail" data-bg-color="#ffffff">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#ffffff"></rect>
+      <g transform="translate(600 400)">
+        <circle cx="0" cy="0" r="30" fill="#39A8D8"></circle>
+        <circle cx="0" cy="-190" r="26" fill="#0a5f8f"></circle>
+        <circle cx="165" cy="-95" r="26" fill="#8e1a9c"></circle>
+        <circle cx="165" cy="95" r="26" fill="#9c1046"></circle>
+        <circle cx="0" cy="190" r="26" fill="#cf4415"></circle>
+        <circle cx="-165" cy="95" r="26" fill="#0e7a63"></circle>
+        <circle cx="-165" cy="-95" r="26" fill="#3d2a9c"></circle>
+        <g stroke="#8fb4d6" stroke-width="3" stroke-opacity="0.5">
+          <line x1="0" y1="0" x2="0" y2="-190"></line>
+          <line x1="0" y1="0" x2="165" y2="-95"></line>
+          <line x1="0" y1="0" x2="165" y2="95"></line>
+          <line x1="0" y1="0" x2="0" y2="190"></line>
+          <line x1="0" y1="0" x2="-165" y2="95"></line>
+          <line x1="0" y1="0" x2="-165" y2="-95"></line>
+        </g>
+      </g>
+    </svg>
+  </template></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+// Category marks: position of the accent dot + center/accent colors, per the category logos.
+const NODES = [
+  { key: "digestive", x: 33, y: 20.6, center: "#007367", accent: "#259a47" },
+  { key: "wellness",  x: 67, y: 20.6, center: "#961a4b", accent: "#d85c73" },
+  { key: "immune",    x: 16, y: 50,   center: "#ce3827", accent: "#f5b21f" },
+  { key: "muscle",    x: 84, y: 50,   center: "#064872", accent: "#009ca7" },
+  { key: "brain",     x: 33, y: 79.4, center: "#483a96", accent: "#008ecc" },
+  { key: "joint",     x: 67, y: 79.4, center: "#862b91", accent: "#b9468d" }
+];
+
+function glyph(activeKey) {
+  const act = NODES.find(n => n.key === activeKey) || NODES[3];
+  const kids = [];
+  NODES.forEach((n, i) => {
+    const on = n.key === act.key;
+    const dx = n.x - 50, dy = n.y - 50, d = Math.hypot(dx, dy), t = on ? 1 : (d - 5.2) / d;
+    kids.push(React.createElement("line", { key: "l" + i, x1: 50, y1: 50, x2: 50 + dx * t, y2: 50 + dy * t, stroke: "#c6c9c7", strokeWidth: on ? 4 : 0.7 }));
+  });
+  kids.push(React.createElement("circle", { key: "c", cx: 50, cy: 50, r: 7.7, fill: act.center }));
+  NODES.forEach((n, i) => {
+    const on = n.key === act.key;
+    kids.push(on
+      ? React.createElement("circle", { key: "n" + i, cx: n.x, cy: n.y, r: 7.9, fill: act.accent })
+      : React.createElement("circle", { key: "n" + i, cx: n.x, cy: n.y, r: 4.6, fill: "none", stroke: act.accent, strokeWidth: 1.25 }));
+  });
+  return React.createElement("svg", {
+    viewBox: "0 0 100 100", width: "100%", height: "100%",
+    style: { display: "block", overflow: "visible" }, "aria-hidden": "true"
+  }, kids);
+}
+
+class Component extends DCLogic {
+  state = { menuOpen: false, agreed: false, subscribed: false };
+  videoRef = React.createRef();
+
+  componentDidMount() {
+    const v = this.videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    const go = () => v.play().catch(() => {});
+    go();
+    v.addEventListener("canplay", go, { once: true });
+  }
+
+  renderVals() {
+    const areas = [
+      { num: "01", key: "muscle", label: "Muscle", title: "Muscle Health Support", href: "MuscleHealthSupport.dc.html", dot: "#0a5f8f", nodeColor: "#0a5f8f", cta: "Muscle", blurb: "Supporting strength, mobility, and everyday function through the gut–muscle connection." },
+      { num: "02", key: "joint", label: "Joint", title: "Joint Health Support", href: "JointHealthSupport.dc.html", dot: "#8e1a9c", nodeColor: "#9b1fb8", cta: "Joint", blurb: "A connected view of comfort, mobility, and resilience for staying active in daily life." },
+      { num: "03", key: "brain", label: "Brain", title: "Brain Health Support", href: "BrainHealthSupport.dc.html", dot: "#3d2a9c", nodeColor: "#4b34c4", cta: "Brain", blurb: "Clarity, focus, and engagement supported through the gut–brain connection." },
+      { num: "04", key: "immune", label: "Immune", title: "Immune Health Support", href: "ImmuneHealthSupport.dc.html", dot: "#cf4415", nodeColor: "#d83a0a", cta: "Immune", blurb: "Everyday resilience anchored in the gut's central role in normal immune function." },
+      { num: "05", key: "digestive", label: "Digestive", title: "Digestive Health Support", href: "DigestiveHealthSupport.dc.html", dot: "#0e7a63", nodeColor: "#0d7d6b", cta: "Digestive", blurb: "Foundational balance — how the body processes and uses what it receives." },
+      { num: "06", key: "wellness", label: "Wellness", title: "Wellness Support", href: "WellnessSupport.dc.html", dot: "#9c1046", nodeColor: "#a8003f", cta: "Wellness", blurb: "Daily systems that help Proactive Agers stay consistent, resilient, and engaged." }
+    ];
+    areas.forEach(a => { a.glyph = glyph(a.key); a.cta = "Explore " + a.title; });
+
+    return {
+      areas,
+      fullGlyph: glyph(null, { dim: false }),
+      standards: [
+        { title: "Supportive, not therapeutic." },
+        { title: "Educational, not prescriptive." },
+        { title: "Evidence-informed, not exaggerated." }
+      ],
+      exploreLinks: [
+        { title: "About", href: "About.dc.html" },
+        { title: "Our Science", href: "Science.dc.html" },
+        { title: "Solutions", href: "Solutions.dc.html" },
+        { title: "Quality & Standards", href: "Quality.dc.html" },
+        { title: "Shop", href: "Shop.dc.html" },
+        { title: "Contact", href: "Contact.dc.html" }
+      ],
+      videoRef: this.videoRef,
+      menuOpen: this.state.menuOpen,
+      agreed: this.state.agreed,
+      subscribeLabel: this.state.subscribed ? "Subscribed" : "Subscribe",
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      toggleAgree: () => this.setState(s => ({ agreed: !s.agreed })),
+      subscribe: () => this.setState({ subscribed: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  h1, h2, h3, h4, h5 { text-wrap: balance !important; }
+  p, li, blockquote, figcaption, label span, dd { text-wrap: pretty !important; }
+  @media (max-width: 720px) { h1, h2, h3, h4, p { max-width: none !important; } }
+  body { margin: 0; overflow-x: hidden; background: #ffffff; color: #57646f; font-family: Figtree, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #082c5c; text-decoration: none; }
+  a:hover { color: #008FCD; }
+  input::placeholder { color: #a6aeb6; }
+  ::selection { background: #d8eefb; }
+  @keyframes shDrift { 0% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(0,-18px,0) scale(1.04); } 100% { transform: translate3d(0,0,0) scale(1); } }
+</style>
+</helmet>
+<div>
+
+  <header style="position: sticky; top: 0; z-index: 60; background: #ffffff; border-bottom: 1px solid #e6ecf2;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 18px 40px; display: flex; align-items: center; gap: 24px;">
+      <a href="Solidhelia.dc.html" style="flex-shrink: 0; display: block;">
+        <img src="assets/solidhelia-logo.png" alt="Solidhelia" style="height: 44px; width: auto; display: block;" />
+      </a>
+      <nav style="display: flex; align-items: center; gap: 4px; margin-left: auto; flex-wrap: wrap;">
+        <a href="About.dc.html" style="font-size: 15px; color: #3c4a57; padding: 9px 14px;" style-hover="color: #008FCD;">About</a>
+        <a href="Science.dc.html" style="font-size: 15px; color: #3c4a57; padding: 9px 14px;" style-hover="color: #008FCD;">Science</a>
+        <div style="position: relative;" onMouseEnter="{{ openMenu }}" onMouseLeave="{{ closeMenu }}">
+          <a href="Solutions.dc.html" style="font-size: 15px; color: #3c4a57; padding: 9px 14px; display: inline-flex; align-items: center; gap: 6px;" style-hover="color: #008FCD;">Solutions<span style="font-size: 10px; opacity: 0.6;">⌄</span></a>
+          <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position: absolute; top: 100%; left: -6px; padding-top: 10px; width: 300px;">
+              <div style="background: #ffffff; border-radius: 3px; box-shadow: 0 22px 54px -22px rgba(16,32,46,0.26); border: 1px solid #e6ecf2; padding: 12px 6px;">
+                <sc-for list="{{ areas }}" as="a" hint-placeholder-count="6">
+                  <a href="{{ a.href }}" style="display: flex; align-items: center; gap: 12px; font-size: 15px; color: #3c4a57; padding: 9px 16px; border-radius: 2px;" style-hover="background: #EAF3FC; color: #082c5c;"><span style="width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; display: block; background: {{ a.dot }};"></span>{{ a.title }}</a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <a href="Quality.dc.html" style="font-size: 15px; color: #3c4a57; padding: 9px 14px;" style-hover="color: #008FCD;">Quality</a>
+        <a href="Contact.dc.html" style="font-size: 15px; color: #3c4a57; padding: 9px 14px;" style-hover="color: #008FCD;">Contact</a>
+        <a href="Shop.dc.html" style="font-size: 15px; color: #082c5c; padding: 10px 26px; margin-left: 12px; border: 1px solid #082c5c; border-radius: 2px;" style-hover="background: #082c5c; color: #ffffff;">Shop</a>
+      </nav>
+    </div>
+  </header>
+
+  <section style="position: relative; overflow: hidden; padding: 120px 40px 96px; background: #EAF3FC;  border-bottom: 1px solid #e6ecf2;">
+    <div style="position: relative;">
+    
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;"><span style="width: 40px; height: 1px; background: #008FCD;"></span><span style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #008FCD;">Quality &amp; Standards</span></div>
+      <h1 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(40px, 5vw, 64px); line-height: 1.07; letter-spacing: -0.015em; margin: 0 0 28px; color: #0c1a28;">Quality Built on&nbsp;Responsibility</h1>
+      <p style="font-size: 17.5px; line-height: 1.72; color: #5a6773; margin: 0; max-width: 32em; text-wrap: pretty;">Solidhelia believes quality is not only about what goes into a product. It is also about how products are developed, communicated, and supported with responsible&nbsp;standards.</p>
+    </div>
+  </div>
+  </section>
+
+
+
+
+  <section style="border-top: 1px solid #e6ecf2; padding: 130px 40px 116px; background: #ffffff;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; margin: 0 0 24px; color: #0c1a28;">Our Quality&nbsp;Philosophy</h2>
+      <p style="font-size: 17.5px; line-height: 1.72; color: #5a6773; margin: 0; max-width: 44em; text-wrap: pretty;">Our science is supportive, not therapeutic. Educational, not prescriptive. Evidence-informed, not exaggerated. Trust is built through clarity, responsible communication, and quality standards that respect both science and the&nbsp;consumer.</p>
+    </div>
+  </section>
+
+  <section style="padding: 96px 40px 104px; background: #EAF3FC; border-top: 1px solid #e6ecf2;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px;">
+        <span style="width: 40px; height: 1px; background: #008FCD;"></span>
+        <span style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #008FCD;">Quality Pillars</span>
+      </div>
+      <div style="display: flex; flex-direction: column; border-top: 1px solid #dde6ef;">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="5">
+          <div style="display: grid; grid-template-columns: 64px minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 32px; align-items: start; padding: 34px 0 36px; border-bottom: 1px solid #dde6ef;">
+            <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; color: #6b7680; padding-top: 5px;">{{ p.num }}</span>
+            <h3 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 22px; line-height: 1.2; margin: 0; color: #0c1a28;">{{ p.title }}</h3>
+            <p style="font-size: 16px; line-height: 1.66; color: #6b7680; margin: 0; text-wrap: pretty;">{{ p.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top: 1px solid #e6ecf2; padding: 130px 40px 40px; background: #ffffff;">
+    <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 72px; align-items: start;">
+      <div style="min-width: 0;">
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(26px, 2.6vw, 32px); line-height: 1.16; margin: 0 0 22px; color: #0c1a28;">Responsible&nbsp;Communication</h2>
+        <p style="font-size: 17px; line-height: 1.72; color: #5a6773; margin: 0; max-width: 27em; text-wrap: pretty;">Trust is built through clarity, responsible communication, and claims that respect both science and the&nbsp;consumer.</p>
+      </div>
+      <div style="min-width: 0;">
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: clamp(26px, 2.6vw, 32px); line-height: 1.16; margin: 0 0 22px; color: #0c1a28;">Transparency</h2>
+        <p style="font-size: 17px; line-height: 1.72; color: #5a6773; margin: 0; max-width: 27em; text-wrap: pretty;">We publish only what we can stand behind and update our standards as our portfolio and science&nbsp;evolve.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 60px 40px 140px; background: #ffffff;">
+    <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;">
+      <a href="Contact.dc.html" style="display: inline-flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; padding: 16px 30px; border-radius: 2px; background: #082c5c; color: #ffffff;" style-hover="background: #0c1a28;">Contact Us<span>→</span></a>
+      <a href="Solutions.dc.html" style="display: inline-flex; align-items: center; font-size: 15px; font-weight: 600; padding: 16px 30px; border-radius: 2px; border: 1px solid #e6ecf2; background: #ffffff; color: #082c5c;" style-hover="border-color: #082c5c;">Explore Solutions</a>
+    </div>
+  </section>
+
+  <footer style="background: #f5f8fb; border-top: 1px solid #e6ecf2;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 78px 40px 46px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 56px;">
+      <div style="min-width: 0;">
+        <img src="assets/solidhelia-logo.png" alt="Solidhelia — Strong Aging Starts Within" style="height: 66px; width: auto; display: block; margin-bottom: 26px;" />
+        <p style="font-size: 15.5px; line-height: 1.68; color: #6b7680; margin: 0 0 22px; max-width: 25em;">A premium, responsible, gut-axis nutraceutical innovation brand for Proactive&nbsp;Agers.</p>
+        <p style="font-size: 15.5px; line-height: 1.68; color: #6b7680; margin: 0 0 26px;">Solidfarma USA Corp. d/b/a Solidhelia<br /><a href="mailto:info@solidhelia.com" style="color: #6b7680;" style-hover="color: #008FCD;">info@solidhelia.com</a></p>
+        <div style="display: flex; gap: 10px;">
+          <a href="#" aria-label="LinkedIn" style="width: 38px; height: 38px; border: 1px solid #d5e0ec; display: flex; align-items: center; justify-content: center; color: #6b7680;" style-hover="border-color: #008FCD; color: #008FCD;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+              <line x1="7.6" y1="10.6" x2="7.6" y2="17"></line>
+              <circle cx="7.6" cy="7.4" r="0.9" fill="currentColor" stroke="none"></circle>
+              <path d="M11.6 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"></path>
+              <line x1="11.6" y1="10.6" x2="11.6" y2="17"></line>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram" style="width: 38px; height: 38px; border: 1px solid #d5e0ec; display: flex; align-items: center; justify-content: center; color: #6b7680;" style-hover="border-color: #008FCD; color: #008FCD;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </a>
+          <a href="#" aria-label="Facebook" style="width: 38px; height: 38px; border: 1px solid #d5e0ec; display: flex; align-items: center; justify-content: center; color: #6b7680;" style-hover="border-color: #008FCD; color: #008FCD;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15.6 3.4h-2.3a3.7 3.7 0 0 0-3.7 3.7V21"></path>
+              <line x1="7.4" y1="11.4" x2="14.6" y2="11.4"></line>
+            </svg>
+          </a>
+          <a href="#" aria-label="YouTube" style="width: 38px; height: 38px; border: 1px solid #d5e0ec; display: flex; align-items: center; justify-content: center; color: #6b7680;" style-hover="border-color: #008FCD; color: #008FCD;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2.6" y="6" width="18.8" height="12" rx="3.4"></rect>
+              <path d="M10.6 9.6l4.4 2.4-4.4 2.4z" fill="currentColor" stroke="none"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div style="min-width: 0;">
+        <h4 style="font-family: 'Playfair Display', Georgia, serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0c1a28; margin: 0 0 22px;">Explore</h4>
+        <div style="display: flex; flex-direction: column; gap: 13px;">
+          <sc-for list="{{ exploreLinks }}" as="l" hint-placeholder-count="6">
+            <a href="{{ l.href }}" style="font-size: 15.5px; color: #4d5a67;" style-hover="color: #008FCD;">{{ l.title }}</a>
+          </sc-for>
+        </div>
+      </div>
+      <div style="min-width: 0;">
+        <h4 style="font-family: 'Playfair Display', Georgia, serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0c1a28; margin: 0 0 22px;">Solution&nbsp;Areas</h4>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px 18px;">
+          <sc-for list="{{ areas }}" as="a" hint-placeholder-count="6">
+            <a href="{{ a.href }}" style="display: flex; align-items: center; gap: 9px; font-size: 15.5px; color: #4d5a67;" style-hover="color: #008FCD;"><span style="width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: {{ a.dot }};"></span>{{ a.label }}</a>
+          </sc-for>
+        </div>
+        <h4 style="font-family: 'Playfair Display', Georgia, serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0c1a28; margin: 34px 0 18px;">Stay&nbsp;Informed</h4>
+        <div style="display: flex; flex-direction: column; gap: 14px; max-width: 380px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px;">
+            <input type="text" placeholder="First name (optional)" style="font-family: Figtree, sans-serif; font-size: 14.5px; padding: 12px 2px; border: none; border-bottom: 1px solid #d9e2ec; background: transparent; color: #3c4a57; min-width: 0;" />
+            <input type="email" placeholder="Email address" style="font-family: Figtree, sans-serif; font-size: 14.5px; padding: 12px 2px; border: none; border-bottom: 1px solid #d9e2ec; background: transparent; color: #3c4a57; min-width: 0;" />
+          </div>
+          <label style="display: flex; gap: 10px; align-items: flex-start; cursor: pointer;">
+            <input type="checkbox" checked="{{ agreed }}" onChange="{{ toggleAgree }}" style="margin-top: 3px; accent-color: #082c5c;" />
+            <span style="font-size: 13.5px; line-height: 1.55; color: #6b7680;">I agree to receive email updates from Solidhelia about science, solution areas, and product updates. I can unsubscribe at any time.</span>
+          </label>
+          <button onClick="{{ subscribe }}" style="font-family: Figtree, sans-serif; font-size: 15px; font-weight: 600; padding: 13px 30px; border: none; border-radius: 2px; background: #082c5c; color: #ffffff; cursor: pointer; align-self: flex-start;" style-hover="background: #0a3f7a;">{{ subscribeLabel }}</button>
+        </div>
+      </div>
+    </div>
+    <div style="border-top: 1px solid #e1e9f2;">
+      <div style="max-width: 1280px; margin: 0 auto; padding: 26px 40px 36px;">
+        <div style="display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between;">
+          <span style="font-size: 14px; color: #6b7680;">© 2026 Solidfarma USA Corp. d/b/a Solidhelia. All rights reserved.</span>
+          <div style="display: flex; gap: 26px;">
+            <a href="/privacy" style="font-size: 14px; color: #4d5a67;" style-hover="color: #008FCD;">Privacy Policy</a>
+            <a href="/terms" style="font-size: 14px; color: #4d5a67;" style-hover="color: #008FCD;">Terms of Service</a>
+          </div>
+        </div>
+        <p style="margin: 18px 0 0; font-size: 12.5px; line-height: 1.65; color: #8b949c; max-width: 68em;">These statements have not been evaluated by the Food and Drug Administration. Products are not intended to diagnose, treat, cure, or prevent any&nbsp;disease.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}">
+class Component extends DCLogic {
+  state = { menuOpen: false, agreed: false, subscribed: false };
+
+  renderVals() {
+    const pillars = [
+      { title: "Thoughtful Ingredient Selection", body: "We evaluate ingredients based on scientific rationale, quality, and appropriateness for the intended solution area." },
+      { title: "Manufacturing Standards", body: "Products are developed with an emphasis on consistent processes and quality control across the manufacturing lifecycle." },
+      { title: "Quality Control", body: "Quality checks and documentation practices support product integrity and consumer trust." },
+      { title: "Responsible Communication", body: "Trust is built through clarity, responsible communication, and claims that respect both science and the consumer." },
+      { title: "Transparency & Consumer Trust", body: "We communicate what our science is \u2014 and what it is not \u2014 so consumers can make informed decisions." }
+    ];
+    return {
+      pillars: pillars.map((p, i) => ({ ...p, num: String(i + 1).padStart(2, "0") })),
+      areas: [
+        { label: "Muscle", title: "Muscle Health Support", href: "MuscleHealthSupport.dc.html", dot: "#0a5f8f" },
+        { label: "Joint", title: "Joint Health Support", href: "JointHealthSupport.dc.html", dot: "#8e1a9c" },
+        { label: "Brain", title: "Brain Health Support", href: "BrainHealthSupport.dc.html", dot: "#3d2a9c" },
+        { label: "Immune", title: "Immune Health Support", href: "ImmuneHealthSupport.dc.html", dot: "#cf4415" },
+        { label: "Digestive", title: "Digestive Health Support", href: "DigestiveHealthSupport.dc.html", dot: "#0e7a63" },
+        { label: "Wellness", title: "Wellness Support", href: "WellnessSupport.dc.html", dot: "#9c1046" }
+      ],
+      exploreLinks: [
+        { title: "About", href: "About.dc.html" },
+        { title: "Our Science", href: "Science.dc.html" },
+        { title: "Solutions", href: "Solutions.dc.html" },
+        { title: "Quality & Standards", href: "Quality.dc.html" },
+        { title: "Shop", href: "Shop.dc.html" },
+        { title: "Contact", href: "Contact.dc.html" }
+      ],
+      menuOpen: this.state.menuOpen,
+      agreed: this.state.agreed,
+      subscribeLabel: this.state.subscribed ? "Subscribed" : "Subscribe",
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      toggleAgree: () => this.setState(s => ({ agreed: !s.agreed })),
+      subscribe: () => this.setState({ subscribed: true })
+    };
+  }
+}
+</script>
+</body>
+</html>
